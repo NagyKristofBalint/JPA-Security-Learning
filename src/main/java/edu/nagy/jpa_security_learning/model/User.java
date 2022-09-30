@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 
 @Getter
@@ -17,10 +18,10 @@ import java.sql.Date;
 @Entity
 @Table(name = "Users")
 public class User extends BaseEntity {
-    @Column(nullable = false)
+    @NotNull
     private String username;
 
-    @Column(nullable = false)
+    @NotNull
     private String password;
 
     private Date birthday;

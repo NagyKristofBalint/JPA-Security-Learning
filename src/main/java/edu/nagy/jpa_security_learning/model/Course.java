@@ -2,20 +2,22 @@ package edu.nagy.jpa_security_learning.model;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "Courses")
-public class Course extends BaseEntity{
-    @Column(nullable = false)
+public class Course extends BaseEntity {
+    @NotNull
     private String name;
 
-    @Column(nullable = false)
+    @NotNull
     private Integer numberOfMaxStudents;
+
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
+    private CourseMaterial courseMaterial;
 }
